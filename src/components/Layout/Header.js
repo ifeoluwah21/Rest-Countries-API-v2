@@ -1,22 +1,23 @@
 import React from 'react';
 
+import styles from "./Header.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
     return (
-        <header>
-            <h1>
+        <header className={styles.header}>
+            <h1 className={styles[`header__title`]}>
                 <a href="/">
                     Where in the world?
                 </a>
             </h1>
 
-            <div>
-                <span>
-                    <FontAwesomeIcon icon={faMoon} />
+            <div className={styles[`header__theme-wrapper`]}>
+                <span className={styles[`header__theme-icon`]}>
+                    <FontAwesomeIcon className={styles[`header__theme-icon`]} icon={faMoon} />
                 </span>
-                <span>Dark Mode</span>
+                <span className={styles[`header__theme-desc`]}>Dark Mode</span>
             </div>
         </header>
     )
