@@ -1,0 +1,62 @@
+@import "../../variables";
+
+.form {
+  padding: 2rem 1rem;
+  position: relative;
+
+  &__input-icon {
+    position: absolute;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  &__select-icon {
+    position: absolute;
+    font-size: 1rem;
+    right: 0;
+    pointer-events: none;
+    top: 0;
+    padding: 1rem 1.5rem;
+  }
+  &__input {
+    width: 100%;
+    max-width: 25rem;
+    margin-bottom: 3rem;
+  }
+  &__control input {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    padding-left: 4rem;
+    background-color: $white;
+    font-size: 1rem;
+    border-radius: 10px;
+    &::placeholder {
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 400;
+    }
+  }
+  &__control select {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+
+    padding: 1rem 1.5rem;
+    & option {
+      font-size: 1rem;
+      font-family: inherit;
+      color: inherit;
+    }
+  }
+  &__select {
+    width: 15rem;
+    position: relative;
+  }
+}
