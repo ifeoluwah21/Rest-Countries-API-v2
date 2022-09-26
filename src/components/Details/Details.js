@@ -53,7 +53,9 @@ const Details = () => {
 
             <article className={styles[`details__info-border`]}>
                 <h2>Border Countries:</h2>
-                {borders && borders?.map?.(name => <p className={countriesCtx.isLightMode ? styles.lm : styles.dm} key={name}>{name}</p>)}
+                {borders && borders?.map?.(name => <p onClick={() => {
+                    countriesCtx.findByName(name)
+                }} className={countriesCtx.isLightMode ? styles.lm : styles.dm} key={name}>{name}</p>)}
                 {!borders && <p className={countriesCtx.isLightMode ? styles.lm : styles.dm}>No border country</p>}
 
             </article>
