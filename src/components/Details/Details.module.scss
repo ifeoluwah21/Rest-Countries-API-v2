@@ -8,9 +8,18 @@
   left: 0;
   right: 0;
   width: 100%;
-  background-color: $v-l-lm-gray;
   overflow-y: scroll;
+  background-color: $v-l-lm-gray;
+  transition: all 100ms ease-in;
 
+  &--lm {
+    background-color: $v-l-lm-gray;
+    color: $v-d-lm-blue;
+  }
+  &--dm {
+    background-color: $v-d-dm-blue;
+    color: $white;
+  }
   &__flag-wrapper {
     width: 90%;
     margin-inline: auto;
@@ -60,7 +69,18 @@
       box-shadow: 1px 1px 5px -2px hsl(0deg 0% 52%),
         -1px -1px 5px -2px hsl(0deg 0% 52%);
       border-radius: 5px;
-      background-color: $white;
+      transition: all 100ms ease-in;
+      &.lm {
+        background-color: $white;
+        box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+      }
+
+      &.dm {
+        background-color: $d-dm-blue;
+        color: $white;
+        box-shadow: 1px 1px 5px -2px $v-d-dm-blue,
+          -1px -1px 5px -2px $v-d-dm-blue;
+      }
     }
   }
 
@@ -71,11 +91,22 @@
   &__btn {
     padding: 0.5rem 1.5rem;
     background-color: $white;
-    box-shadow: 1px 1px 5px -2px hsl(0deg 0% 52%),
-      -1px -1px 5px -2px hsl(0deg 0% 52%);
+
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 100ms ease-in;
+
+    &--lm {
+      background-color: $white;
+      box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    }
+
+    &--dm {
+      background-color: $d-dm-blue;
+      color: $white;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+    }
     & span {
       margin-left: 0.5rem;
       font-size: 1rem;
@@ -84,6 +115,15 @@
     & .icon {
       font-size: 1rem;
       color: inherit;
+      transition: all 100ms ease-in;
+
+      &--lm {
+        color: $v-d-dm-blue;
+      }
+
+      &--dm {
+        color: $white;
+      }
     }
   }
 }

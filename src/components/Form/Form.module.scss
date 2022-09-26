@@ -8,6 +8,14 @@
     position: absolute;
     font-size: 1rem;
     padding: 1rem 1.5rem;
+    transition: all 100ms ease;
+    &--lm {
+      color: $v-lm-gray;
+    }
+
+    &--dm {
+      color: $white;
+    }
   }
   &__select-icon {
     position: absolute;
@@ -16,6 +24,14 @@
     pointer-events: none;
     top: 0;
     padding: 1rem 1.5rem;
+    transition: all 100ms ease;
+    &--lm {
+      color: $v-d-lm-blue;
+    }
+
+    &--dm {
+      color: $white;
+    }
   }
   &__input {
     width: 100%;
@@ -31,10 +47,24 @@
     width: 100%;
     padding: 1rem 0;
     padding-left: 4rem;
-    background-color: $white;
     font-size: 1rem;
     border-radius: 10px;
     box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    transition: all 100ms ease;
+
+    &.--lm {
+      color: $v-d-lm-blue;
+      background-color: $white;
+    }
+
+    &.--dm {
+      color: $white;
+      background-color: $d-dm-blue;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+      &::placeholder {
+        color: $white;
+      }
+    }
     &:focus {
       outline: 2px solid $d-dm-blue;
     }
@@ -52,9 +82,19 @@
     border-radius: 10px;
     font-size: 1rem;
     font-family: inherit;
-    color: inherit;
-    background-color: $white;
     box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    transition: all 100ms ease;
+
+    &.--lm {
+      color: $v-d-lm-blue;
+      background-color: $white;
+    }
+
+    &.--dm {
+      color: $white;
+      background-color: $d-dm-blue;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+    }
     &:focus {
       outline: 2px solid $d-dm-blue;
     }

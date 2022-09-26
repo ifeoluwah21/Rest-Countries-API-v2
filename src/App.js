@@ -1,5 +1,5 @@
 
-import './App.scss';
+import styles from './App.module.scss';
 import React, { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Layout/Header';
@@ -19,7 +19,7 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <main>
+      <main className={`${styles.main} ${countriesCtx.isLightMode ? `${styles[`main--lm`]}` : ` ${styles[`main--dm`]}`}`}>
         <Form />
         <Countries getName={getName} />
         {countriesCtx.isDetailsPageShown && ReactDOM.createPortal(<Details />, document.getElementById(`details`))}

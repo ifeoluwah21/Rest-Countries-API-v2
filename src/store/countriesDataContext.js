@@ -6,6 +6,8 @@ const CountriesContext = React.createContext({
     queried: false,
     isDetailsPageShown: false,
     details: {},
+    isLightMode: true,
+    toggleTheme: () => { },
     filterByName: (name) => { },
     filterByRegion: (region) => { },
     findByName: (name) => { },

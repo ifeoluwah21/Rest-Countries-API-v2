@@ -10,7 +10,7 @@ import CountriesContext from '../../store/countriesDataContext';
 const Details = () => {
     const countriesCtx = useContext(CountriesContext);
     console.log(countriesCtx);
-    const borders = countriesCtx.details.borders.map(x => {
+    const borders = countriesCtx.details?.borders?.map?.(x => {
         let result;
         for (let country of countriesCtx.countries) {
             if (x === country.fifa) {
@@ -25,10 +25,11 @@ const Details = () => {
         countriesCtx.hideDetailsPage();
 
     }
+    console.log(countriesCtx.isLightMode)
     return (
-        <section className={styles.details}>
+        <section className={`${styles[`details`]} ${countriesCtx.isLightMode ? styles[`details--lm`] : styles[`details--dm`]}`}>
             <div className={styles[`details__action`]}>
-                <button onClick={closeDetailsPageHandler} className={styles[`details__btn`]}>
+                <button onClick={closeDetailsPageHandler} className={`${styles[`details__btn`]} ${countriesCtx.isLightMode ? styles[`details__btn--lm`] : styles[`details__btn--dm`]}`}>
                     <FontAwesomeIcon className={styles[`icon`]} icon={faArrowLeftLong} />
                     <span>Back</span>
                 </button>
@@ -52,8 +53,8 @@ const Details = () => {
 
             <article className={styles[`details__info-border`]}>
                 <h2>Border Countries:</h2>
-                {borders.map(name => <p key={name}>{name}</p>)}
-
+                {borders && borders?.map?.(name => <p className={countriesCtx.isLightMode ? styles.lm : styles.dm} key={name}>{name}</p>)}
+                {!borders && <p className={countriesCtx.isLightMode ? styles.lm : styles.dm}>No border country</p>}
 
             </article>
         </section>

@@ -33,12 +33,12 @@ const Form = () => {
     return (
         <form onSubmit={submitHandler} className={styles.form}>
             <div className={`${styles[`form__control`]} ${styles[`form__input`]}`}>
-                <FontAwesomeIcon icon={faSearch} className={styles[`form__input-icon`]} />
-                <input onChange={inputChangeHandler} ref={nameRef} type="text" aria-label='Search by name'
+                <FontAwesomeIcon icon={faSearch} className={`${styles[`form__input-icon`]} ${countriesCtx.isLightMode ? styles[`form__input-icon--lm`] : styles[`form__input-icon--dm`]}`} />
+                <input className={`${countriesCtx.isLightMode ? styles[`--lm`] : styles[`--dm`]}`} onChange={inputChangeHandler} ref={nameRef} type="text" aria-label='Search by name'
                     placeholder='Search for a country...' />
             </div>
             <div className={`${styles[`form__control`]} ${styles[`form__select`]}`}>
-                <select onChange={selectChangeHandler} ref={regionRef} name="Filter by region">
+                <select className={`${countriesCtx.isLightMode ? styles[`--lm`] : styles[`--dm`]}`} onChange={selectChangeHandler} ref={regionRef} name="Filter by region">
                     <option value="">Filter by Region</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
@@ -46,7 +46,7 @@ const Form = () => {
                     <option value="Europe">Europe</option>
                     <option value="Oceania">Oceanic</option>
                 </select>
-                <FontAwesomeIcon icon={faChevronDown} className={styles[`form__select-icon`]} />
+                <FontAwesomeIcon icon={faChevronDown} className={`${styles[`form__select-icon`]} ${countriesCtx.isLightMode ? styles[`form__select-icon--lm`] : styles[`form__select-icon--dm`]}`} />
             </div>
         </form>
     )
