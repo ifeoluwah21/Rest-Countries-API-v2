@@ -107,8 +107,23 @@
     }
   }
   &__select {
-    width: 15rem;
+    width: 12rem;
     position: relative;
     z-index: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    &__input {
+      margin: 0;
+      max-width: 25rem;
+    }
   }
 }
