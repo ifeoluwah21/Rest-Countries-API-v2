@@ -3,11 +3,6 @@
 .header {
   width: 100%;
   background-color: $white;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 1rem;
   box-shadow: 0 1px 5px 0 $v-lm-gray;
   position: sticky;
   top: 0;
@@ -16,6 +11,15 @@
   z-index: 2;
   transition: all 100ms ease-in-out;
 
+  &__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 2rem 0;
+    margin-inline: auto;
+  }
   &--lm {
     color: $v-d-lm-blue;
     background-color: $white;
@@ -56,5 +60,13 @@
     font-size: 1.2rem;
     padding-left: 0.5rem;
     font-weight: 300;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    &__wrapper {
+      width: 90%;
+    }
   }
 }

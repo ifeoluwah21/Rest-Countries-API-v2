@@ -14,18 +14,20 @@ const Header = () => {
     console.log(countriesCtx.isLightMode)
     return (
         <header className={`${styles.header} ${countriesCtx.isLightMode ? styles[`header--lm`] : styles[`header--dm`]}`}>
-            <h1 className={styles[`header__title`]}>
-                <a href="/">
-                    Where in the world?
-                </a>
-            </h1>
+            <div className={styles[`header__wrapper`]}>
+                <h1 className={styles[`header__title`]}>
+                    <a href="/">
+                        Where in the world?
+                    </a>
+                </h1>
 
-            <button type='button' onClick={toggleTheme} className={styles[`header__theme-wrapper`]}>
-                <span className={styles[`header__theme-icon`]}>
-                    <FontAwesomeIcon className={styles[`header__theme-icon`]} icon={countriesCtx.isLightMode ? lm : dm} />
-                </span>
-                <span className={styles[`header__theme-desc`]}>Dark Mode</span>
-            </button>
+                <button type='button' onClick={toggleTheme} className={styles[`header__theme-wrapper`]}>
+                    <span className={styles[`header__theme-icon`]}>
+                        <FontAwesomeIcon className={styles[`header__theme-icon`]} icon={countriesCtx.isLightMode ? lm : dm} />
+                    </span>
+                    <span className={styles[`header__theme-desc`]}>Dark Mode</span>
+                </button>
+            </div>
         </header>
     )
 }
