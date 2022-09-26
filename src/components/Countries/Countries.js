@@ -29,9 +29,10 @@ const Countries = (props) => {
     </section>)
     return (<React.Fragment>
         <ErrorBoundaries>
-            {countriesCtx.isLoading && !sectionContent && <div className={styles.loading}></div>}
+
             {countriesCtx.errorMsg !== "" && <p className={styles.error}>{countriesCtx.errorMsg}</p>}
             {!countriesCtx.isLoading && sectionContent}
+            {countriesCtx.isLoading && <div className={styles.loading}></div>}
         </ErrorBoundaries>
     </React.Fragment>
     )
