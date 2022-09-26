@@ -11,7 +11,6 @@ const Header = () => {
     const toggleTheme = () => {
         countriesCtx.toggleTheme();
     }
-    console.log(countriesCtx.isLightMode)
     return (
         <header className={`${styles.header} ${countriesCtx.isLightMode ? styles[`header--lm`] : styles[`header--dm`]}`}>
             <div className={styles[`header__wrapper`]}>
