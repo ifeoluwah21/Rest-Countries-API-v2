@@ -1,0 +1,14 @@
+@import "./variables";
+
+.main {
+  transition: all 100ms ease-in;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+
+  &--lm {
+    background-color: $v-l-lm-gray;
+  }
+  &--dm {
+    background-color: $v-d-dm-blue;
+  }
+}

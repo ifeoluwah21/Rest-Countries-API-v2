@@ -1,0 +1,72 @@
+@import "../../variables.scss";
+
+.header {
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 1px 5px 0 $v-lm-gray;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transition: all 100ms ease-in-out;
+
+  &__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 2rem 0;
+    margin-inline: auto;
+  }
+  &--lm {
+    color: $v-d-lm-blue;
+    background-color: $white;
+  }
+
+  &--dm {
+    color: $white;
+    background-color: $d-dm-blue;
+    box-shadow: 0 1px 5px 0 $v-d-dm-blue;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 800;
+
+    & a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 100ms ease-in-out;
+    }
+  }
+  &__theme-wrapper {
+    font-size: 1.2rem;
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+  }
+
+  &__theme-icon {
+    font-size: 1.2rem;
+    color: inherit;
+    transition: all 100ms ease-in-out;
+  }
+
+  &__theme-desc {
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    font-weight: 300;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    &__wrapper {
+      width: 90%;
+    }
+  }
+}

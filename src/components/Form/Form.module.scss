@@ -1,0 +1,129 @@
+@import "../../variables";
+
+.form {
+  padding: 2rem 1rem;
+  position: relative;
+
+  &__input-icon {
+    position: absolute;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    transition: all 100ms ease;
+    &--lm {
+      color: $v-lm-gray;
+    }
+
+    &--dm {
+      color: $white;
+    }
+  }
+  &__select-icon {
+    position: absolute;
+    font-size: 1rem;
+    right: 0;
+    pointer-events: none;
+    top: 0;
+    padding: 1rem 1.5rem;
+    transition: all 100ms ease;
+    &--lm {
+      color: $v-d-lm-blue;
+    }
+
+    &--dm {
+      color: $white;
+    }
+  }
+  &__input {
+    width: 100%;
+    max-width: 25rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  &__control input {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    padding-left: 4rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    transition: all 100ms ease;
+
+    &.--lm {
+      color: $v-d-lm-blue;
+      background-color: $white;
+    }
+
+    &.--dm {
+      color: $white;
+      background-color: $d-dm-blue;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+      &::placeholder {
+        color: $white;
+      }
+    }
+    &:focus {
+      outline: 2px solid $d-dm-blue;
+    }
+    &::placeholder {
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 400;
+    }
+  }
+  &__control select {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    transition: all 100ms ease;
+
+    &.--lm {
+      color: $v-d-lm-blue;
+      background-color: $white;
+    }
+
+    &.--dm {
+      color: $white;
+      background-color: $d-dm-blue;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+    }
+    &:focus {
+      outline: 2px solid $d-dm-blue;
+    }
+
+    padding: 1rem 1.5rem;
+    & option {
+      font-size: 1rem;
+      font-family: inherit;
+      color: inherit;
+    }
+  }
+  &__select {
+    width: 12rem;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    &__input {
+      margin: 0;
+      max-width: 25rem;
+    }
+  }
+}

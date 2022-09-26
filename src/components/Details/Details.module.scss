@@ -1,0 +1,212 @@
+@import "../../variables";
+
+.details {
+  position: fixed;
+  z-index: 2;
+  top: 5.5rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: $v-l-lm-gray;
+  transition: all 100ms ease-in;
+  animation: slideIn 500ms ease-in;
+
+  &--lm {
+    background-color: $v-l-lm-gray;
+    color: $v-d-lm-blue;
+  }
+  &--dm {
+    background-color: $v-d-dm-blue;
+    color: $white;
+  }
+  &__flag-wrapper {
+    width: 90%;
+    margin-inline: auto;
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    width: 90%;
+    margin: 1.5rem auto;
+    font-family: inherit;
+    color: inherit;
+  }
+  &__info,
+  &__sub-info {
+    width: 90%;
+    margin: 0 auto;
+    font-family: inherit;
+    color: inherit;
+    & p {
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      & span {
+        font-weight: 800;
+      }
+    }
+  }
+  &__sub-info {
+    margin: 1rem auto 2rem;
+  }
+  &__info-border {
+    width: 90%;
+    margin: 1rem auto 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    & h2 {
+      font-size: 1.1rem;
+
+      grid-column: 1/-1;
+    }
+
+    & p {
+      align-self: center;
+      text-align: center;
+      padding: 0.5rem;
+      box-shadow: 1px 1px 5px -2px hsl(0deg 0% 52%),
+        -1px -1px 5px -2px hsl(0deg 0% 52%);
+      border-radius: 5px;
+      transition: all 100ms ease-in;
+      &.lm {
+        background-color: $white;
+        box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+      }
+
+      &.dm {
+        background-color: $d-dm-blue;
+        color: $white;
+        box-shadow: 1px 1px 5px -2px $v-d-dm-blue,
+          -1px -1px 5px -2px $v-d-dm-blue;
+      }
+    }
+  }
+
+  &__action {
+    width: 90%;
+    margin: 2rem auto;
+  }
+  &__btn {
+    padding: 0.5rem 1.5rem;
+    background-color: $white;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 100ms ease-in;
+
+    &--lm {
+      background-color: $white;
+      box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    }
+
+    &--dm {
+      background-color: $d-dm-blue;
+      color: $white;
+      box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+    }
+    & span {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+    }
+
+    & .icon {
+      font-size: 1rem;
+      color: inherit;
+      transition: all 100ms ease-in;
+
+      &--lm {
+        color: $v-d-dm-blue;
+      }
+
+      &--dm {
+        color: $white;
+      }
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .details {
+    &__action,
+    &__title,
+    &__info,
+    &__sub-info,
+    &__border-info,
+    &__flag-wrapper {
+      width: 90%;
+    }
+
+    &__flag-wrapper {
+      & img {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .details {
+    display: grid;
+    grid-template-columns: 5% 40% auto 20% auto 20% 5%;
+    grid-template-rows: repeat(auto-fill, 2rem);
+
+    &__action {
+      margin: 0;
+      grid-column: 2/3;
+      grid-row: 2/3;
+    }
+    &__flag-wrapper {
+      grid-column: 2/3;
+      grid-row: 4/17;
+      width: 100%;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__title {
+      width: 100%;
+      margin: 0;
+      grid-column: 4/5;
+      grid-row: 5/6;
+    }
+
+    &__info {
+      grid-column: 4/5;
+      grid-row: 7/12;
+      width: 100%;
+      place-self: self-start;
+    }
+
+    &__sub-info {
+      margin: 0;
+      grid-column: 6/7;
+      grid-row: 7/12;
+      place-self: self-start;
+      width: 100%;
+    }
+
+    &__info-border {
+      margin: 0;
+      grid-column: 4/7;
+      grid-row: 14/17;
+      width: 100%;
+    }
+  }
+}
