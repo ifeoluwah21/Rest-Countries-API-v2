@@ -21,6 +21,8 @@
     width: 100%;
     max-width: 25rem;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
   }
   &__control input {
     appearance: none;
@@ -32,6 +34,10 @@
     background-color: $white;
     font-size: 1rem;
     border-radius: 10px;
+    box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    &:focus {
+      outline: 2px solid $d-dm-blue;
+    }
     &::placeholder {
       font-size: 1rem;
       font-family: inherit;
@@ -47,6 +53,11 @@
     font-size: 1rem;
     font-family: inherit;
     color: inherit;
+    background-color: $white;
+    box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
+    &:focus {
+      outline: 2px solid $d-dm-blue;
+    }
 
     padding: 1rem 1.5rem;
     & option {
@@ -58,5 +69,6 @@
   &__select {
     width: 15rem;
     position: relative;
+    z-index: 1;
   }
 }
