@@ -11,11 +11,12 @@ const Form = () => {
     const nameRef = useRef("");
     const regionRef = useRef(``);
     const selectChangeHandler = event => {
-        console.log(regionRef.current.value);
+        nameRef.current.value = '';
         countriesCtx.filterByRegion(regionRef.current.value);
     }
 
     const inputChangeHandler = event => {
+        regionRef.current.selectedIndex = 0;
         countriesCtx.filterByName(nameRef.current.value);
     }
 
