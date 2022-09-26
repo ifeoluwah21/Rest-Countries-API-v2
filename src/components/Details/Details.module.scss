@@ -11,6 +11,7 @@
   overflow-y: scroll;
   background-color: $v-l-lm-gray;
   transition: all 100ms ease-in;
+  animation: slideIn 500ms ease-in;
 
   &--lm {
     background-color: $v-l-lm-gray;
@@ -129,6 +130,14 @@
   }
 }
 
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
 @media screen and (min-width: 768px) {
   .details {
     &__action,
