@@ -1,5 +1,4 @@
 
-import styles from './App.module.scss';
 import React, { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Layout/Header';
@@ -8,6 +7,7 @@ import Countries from './components/Countries/Countries';
 import CountriesContext from './store/countriesDataContext';
 import Details from './components/Details/Details';
 
+import styles from './App.module.scss';
 
 
 function App() {

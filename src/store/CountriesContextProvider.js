@@ -10,7 +10,9 @@ const reducerFn = (state = initState, action) => {
             queried: false,
             isDetailsPageShown: false,
             details: [],
-            isLightMode: state.isLightMode
+            isLightMode: state.isLightMode,
+            isLoading: state.isLoading,
+            errorMsg: state.errorMsg,
         }
     }
     if (action.type === `QUERY_BY_NAME`) {
@@ -22,7 +24,9 @@ const reducerFn = (state = initState, action) => {
             queriedCountries: newCountriesData,
             queried: queried,
             isDetailsPageShown: false,
-            details: [], isLightMode: state.isLightMode
+            details: [], isLightMode: state.isLightMode,
+            isLoading: state.isLoading,
+            errorMsg: state.errorMsg,
         }
     }
     if (action.type === `QUERY_BY_REGION`) {
@@ -34,7 +38,9 @@ const reducerFn = (state = initState, action) => {
             queried: queried,
             isDetailsPageShown: false,
             details: [],
-            isLightMode: state.isLightMode
+            isLightMode: state.isLightMode,
+            isLoading: state.isLoading,
+            errorMsg: state.errorMsg,
         }
     }
     if (action.type === `FIND_BY_NAME`) {
@@ -45,7 +51,9 @@ const reducerFn = (state = initState, action) => {
             queried: state.queried,
             isDetailsPageShown: true,
             details,
-            isLightMode: state.isLightMode
+            isLightMode: state.isLightMode,
+            isLoading: state.isLoading,
+            errorMsg: state.errorMsg
         }
     }
     if (action.type === `HIDE_DETAILS_PAGE`) {
@@ -61,6 +69,25 @@ const reducerFn = (state = initState, action) => {
             isLightMode: !state.isLightMode
         }
     }
+    if (action.type === `START_LOADING`) {
+        return {
+            ...state,
+            isLoading: true
+        }
+    }
+    if (action.type === `END_LOADING`) {
+        return {
+            ...state,
+            isLoading: false
+        }
+    }
+    if (action.type === "ERROR") {
+        return {
+            ...state,
+            isLoading: false,
+            errorMsg: action.value,
+        }
+    }
 
     return state;
 }
@@ -69,16 +96,22 @@ const initState = {
     queriedCountries: [],
     queried: false,
     isDetailsPageShown: false,
-    isLightMode: true
+    isLightMode: true,
+    isLoading: false,
+    errorMsg: "",
 }
 const CountriesContextProvider = (props) => {
-    const [datas, dispatchFn] = useReducer(reducerFn, initState)
+    const [datas, dispatchFn] = useReducer(reducerFn, initState);
     useEffect(() => {
         async function fetchCountriesData() {
+            dispatchFn({ type: `START_LOADING` });
             const res = await fetch("https://restcountries.com/v3.1/all");
+            if (!res.ok) {
+                throw new Error(`Something broke : ${res?.statusText
+                    }`)
+            }
             const datas = await res.json();
 
-            console.log(datas);
             const transformedDatas = datas.map(data => (
                 {
                     name: data?.name.common,
@@ -115,9 +148,15 @@ const CountriesContextProvider = (props) => {
 
             ))
 
-            dispatchFn({ type: `FETCH_ALL`, value: transformedDatas })
+            dispatchFn({ type: `FETCH_ALL`, value: transformedDatas });
+            dispatchFn({ type: `END_LOADING` });
         };
-        fetchCountriesData();
+        fetchCountriesData().catch(error => {
+            dispatchFn({
+                type: `ERROR`,
+                value: error.message,
+            });
+        });
     }, [])
 
     const filterByName = (name) => {
@@ -137,7 +176,6 @@ const CountriesContextProvider = (props) => {
         dispatchFn({ type: `THEMING` })
     }
 
-    console.log(`ran`)
 
     return <CountriesContext.Provider value={{
         countries: datas.countriesData,
@@ -146,11 +184,14 @@ const CountriesContextProvider = (props) => {
         isDetailsPageShown: datas.isDetailsPageShown,
         details: datas.details,
         isLightMode: datas.isLightMode,
+        isLoading: datas.isLoading,
+        errorMsg: datas.errorMsg,
         toggleTheme,
         filterByName,
         filterByRegion,
         findByName,
-        hideDetailsPage
+        hideDetailsPage,
+
     }}>
         {props.children}
     </CountriesContext.Provider>;

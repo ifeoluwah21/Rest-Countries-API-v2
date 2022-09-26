@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import CountriesContext from "../../store/countriesDataContext";
+import ErrorBoundaries from "../Error/Error";
 
 import styles from "./Countries.module.scss";
 import Country from "./Country";
@@ -23,10 +24,16 @@ const Countries = (props) => {
                 capital={data.capital} region={data.region} />
         ))
     }
-    return (
-        <section className={styles.section}>
-            {countriesContent}
-        </section>
+    const sectionContent = (<section className={styles.section}>
+        {countriesContent}
+    </section>)
+    return (<React.Fragment>
+        <ErrorBoundaries>
+            {countriesCtx.isLoading && !sectionContent && <div className={styles.loading}></div>}
+            {countriesCtx.errorMsg !== "" && <p className={styles.error}>{countriesCtx.errorMsg}</p>}
+            {!countriesCtx.isLoading && sectionContent}
+        </ErrorBoundaries>
+    </React.Fragment>
     )
 }
 
