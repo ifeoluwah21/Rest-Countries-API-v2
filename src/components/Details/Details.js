@@ -11,11 +11,14 @@ const Details = () => {
     const countriesCtx = useContext(CountriesContext);
     console.log(countriesCtx);
     const borders = countriesCtx.details.borders.map(x => {
+        let result;
         for (let country of countriesCtx.countries) {
             if (x === country.fifa) {
-                return country.name;
+                result = country.name;
+                break;
             }
         }
+        return result;
     })
     console.log(borders)
     const closeDetailsPageHandler = () => {
