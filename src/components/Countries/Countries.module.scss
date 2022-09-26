@@ -1,1 +1,8 @@
 @import "../../variables";
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 2rem 4rem;
+  place-content: center;
+}

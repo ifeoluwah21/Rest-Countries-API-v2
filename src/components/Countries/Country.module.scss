@@ -9,6 +9,16 @@
   background-color: white;
   box-shadow: 1px 1px 5px -2px #ccc, -1px -1px 5px -2px #ccc;
 
+  &--lm {
+    background-color: $v-l-lm-gray;
+    color: $v-d-lm-blue;
+  }
+  &--dm {
+    box-shadow: 1px 1px 5px -2px $v-d-dm-blue, -1px -1px 5px -2px $v-d-dm-blue;
+    background-color: $d-dm-blue;
+    color: $white;
+  }
+
   &__flag {
     width: 320px;
     height: 200px;

@@ -7,9 +7,9 @@ const Country = (props) => {
         props.onClick(props.name);
     }
     return (
-        <article onClick={clickHandler} className={styles.card}>
+        <article onClick={clickHandler} className={`${styles.card} ${styles[`card${props.className}`]}`}>
             <div className={styles[`card__flag`]}>
-                <img src={props.flag} alt="" />
+                <img src={props.flag} alt={props.name} />
             </div>
             <article className={styles[`card__detail`]}>
                 <h2 className={styles[`card__title`]}>{props.name}</h2>

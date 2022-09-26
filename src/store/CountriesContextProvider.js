@@ -9,7 +9,8 @@ const reducerFn = (state = initState, action) => {
             queriedCountries: state.queriedCountries,
             queried: false,
             isDetailsPageShown: false,
-            details: []
+            details: [],
+            isLightMode: state.isLightMode
         }
     }
     if (action.type === `QUERY_BY_NAME`) {
@@ -21,7 +22,7 @@ const reducerFn = (state = initState, action) => {
             queriedCountries: newCountriesData,
             queried: queried,
             isDetailsPageShown: false,
-            details: []
+            details: [], isLightMode: state.isLightMode
         }
     }
     if (action.type === `QUERY_BY_REGION`) {
@@ -32,7 +33,8 @@ const reducerFn = (state = initState, action) => {
             queriedCountries: newCountriesData,
             queried: queried,
             isDetailsPageShown: false,
-            details: []
+            details: [],
+            isLightMode: state.isLightMode
         }
     }
     if (action.type === `FIND_BY_NAME`) {
@@ -43,6 +45,7 @@ const reducerFn = (state = initState, action) => {
             queried: state.queried,
             isDetailsPageShown: true,
             details,
+            isLightMode: state.isLightMode
         }
     }
     if (action.type === `HIDE_DETAILS_PAGE`) {
@@ -52,13 +55,21 @@ const reducerFn = (state = initState, action) => {
             details: []
         }
     }
+    if (action.type === `THEMING`) {
+        return {
+            ...state,
+            isLightMode: !state.isLightMode
+        }
+    }
+
     return state;
 }
 const initState = {
     countriesData: [],
     queriedCountries: [],
     queried: false,
-    isDetailsPageShown: false
+    isDetailsPageShown: false,
+    isLightMode: true
 }
 const CountriesContextProvider = (props) => {
     const [datas, dispatchFn] = useReducer(reducerFn, initState)
@@ -122,6 +133,10 @@ const CountriesContextProvider = (props) => {
         dispatchFn({ type: `HIDE_DETAILS_PAGE` })
     }
 
+    const toggleTheme = () => {
+        dispatchFn({ type: `THEMING` })
+    }
+
     console.log(`ran`)
 
     return <CountriesContext.Provider value={{
@@ -130,6 +145,8 @@ const CountriesContextProvider = (props) => {
         queried: datas.queried,
         isDetailsPageShown: datas.isDetailsPageShown,
         details: datas.details,
+        isLightMode: datas.isLightMode,
+        toggleTheme,
         filterByName,
         filterByRegion,
         findByName,
