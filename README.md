@@ -29,9 +29,9 @@ Users should be able to:
 
 ### Screenshot
 
-<img src="../rest-countries-api-v2/public/assets/mobile.png" alt="Screenshot of mobile screen" width="250px">
+<img src="./rest-countries-api-v2/public/assets/mobile.png" alt="Screenshot of mobile screen" width="250px">
 
-<img src="../rest-countries-api-v2/public/assets/desktop.png" alt="Screenshot of desktop screen" width="400px">
+<img src="./rest-countries-api-v2/public/assets/desktop.png" alt="Screenshot of desktop screen" width="400px">
 
 ### Links
 

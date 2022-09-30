@@ -1,28 +1,31 @@
 
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Layout/Header';
 import Form from './components/Form/Form';
 import Countries from './components/Countries/Countries';
-import CountriesContext from './store/countriesDataContext';
 import Details from './components/Details/Details';
 
 import styles from './App.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { detailsActions } from './store/details-slice';
 
 
 function App() {
-  const countriesCtx = useContext(CountriesContext);
+  const countries = useSelector(state => state.countries.countries);
+  const isLightMode = useSelector(state => state.theme.isLightMode)
+  const isDetailsPageShown = useSelector(state => state.details.isDetailsPageShown);
+  const dispatch = useDispatch();
   const getName = name => {
-    console.log(name);
-    countriesCtx.findByName(name);
+    dispatch(detailsActions.getDetails({ value: name, allCountries: countries }));
   }
   return (
     <Fragment>
       <Header />
-      <main className={`${styles.main} ${countriesCtx.isLightMode ? `${styles[`main--lm`]}` : ` ${styles[`main--dm`]}`}`}>
+      <main className={`${styles.main} ${isLightMode ? `${styles[`main--lm`]}` : ` ${styles[`main--dm`]}`}`}>
         <Form />
         <Countries getName={getName} />
-        {countriesCtx.isDetailsPageShown && ReactDOM.createPortal(<Details />, document.getElementById(`details`))}
+        {isDetailsPageShown && ReactDOM.createPortal(<Details />, document.getElementById(`details`))}
       </main>
     </Fragment>
   );

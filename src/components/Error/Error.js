@@ -1,8 +1,6 @@
 import React from "react";
-import CountriesContext from "../../store/countriesDataContext";
 
 class ErrorBoundaries extends React.Component {
-    static contextType = CountriesContext;
     constructor(props) {
         super(props)
         this.state = {
