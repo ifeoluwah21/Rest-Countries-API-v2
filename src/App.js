@@ -17,7 +17,6 @@ function App() {
   const isDetailsPageShown = useSelector(state => state.details.isDetailsPageShown);
   const dispatch = useDispatch();
   const getName = name => {
-    console.log(name);
     dispatch(detailsActions.getDetails({ value: name, allCountries: countries }));
   }
   return (

@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from "./Details.module.scss";
-import CountriesContext from '../../store/countriesDataContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { detailsActions } from '../../store/details-slice';
 
@@ -13,9 +12,7 @@ const Details = () => {
     const details = useSelector(state => state.details.details);
     const countries = useSelector(state => state.countries.countries);
     const isLightMode = useSelector(state => state.theme.isLightMode)
-    const countriesCtx = useContext(CountriesContext);
-    const dispatch = useDispatch()
-    console.log(countriesCtx);
+    const dispatch = useDispatch();
     const borders = details?.borders?.map?.(x => {
         let result;
         for (let country of countries) {
@@ -26,7 +23,6 @@ const Details = () => {
         }
         return result;
     })
-    console.log(borders)
     const closeDetailsPageHandler = () => {
         dispatch(detailsActions.hideDetails());
 
@@ -34,7 +30,6 @@ const Details = () => {
     const borderDetailsHandler = (name) => {
         dispatch(detailsActions.getDetails({ allCountries: countries, value: name }))
     }
-    console.log(isLightMode)
     return (
         <section className={`${styles[`details`]} ${isLightMode ? styles[`details--lm`] : styles[`details--dm`]}`}>
             <div className={styles[`details__action`]}>
