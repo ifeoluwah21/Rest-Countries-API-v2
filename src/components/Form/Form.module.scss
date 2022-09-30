@@ -51,6 +51,7 @@
     border-radius: 10px;
     box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
     transition: all 100ms ease;
+    cursor: pointer;
 
     &.--lm {
       color: $v-d-lm-blue;
@@ -84,6 +85,7 @@
     font-family: inherit;
     box-shadow: 1px 1px 5px -2px $v-lm-gray, -1px -1px 5px -2px $v-lm-gray;
     transition: all 100ms ease;
+    cursor: pointer;
 
     &.--lm {
       color: $v-d-lm-blue;
