@@ -1,25 +1,33 @@
-import React, { useContext } from "react"
-import CountriesContext from "../../store/countriesDataContext";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountries } from "../../store/countries-action";
 import ErrorBoundaries from "../Error/Error";
 
 import styles from "./Countries.module.scss";
 import Country from "./Country";
 
 const Countries = (props) => {
-    const countriesCtx = useContext(CountriesContext);
+    const countriesData = useSelector(state => state.countries);
+    const isLightMode = useSelector(state => state.theme.isLightMode)
+    const status = useSelector(state => state.status);
+    const dispatch = useDispatch();
     const clickHandler = name => {
         props.getName(name)
     }
+    useEffect(() => {
+
+        dispatch(fetchCountries())
+    }, [dispatch])
     // LOOPING THROUGH ALL THE COUNTRIES DATA
-    let countriesContent = (countriesCtx.countries.slice(0, 60).map(data => (
-        <Country className={countriesCtx.isLightMode ? "--lm" : '--dm'} onClick={clickHandler} name={data.name} key={data.name}
+    let countriesContent = (countriesData.countries.slice(0, 60).map(data => (
+        <Country className={isLightMode ? "--lm" : '--dm'} onClick={clickHandler} name={data.name} key={data.name}
             flag={data.flag} population={data.population.toLocaleString()}
             capital={data.capital} region={data.region} />
     )))
     //CHECKING IF THE DATA HAS BEEN QUERIED, THEN ASSIGNING THE CONTENT TO BE DISPLAY TO THE RESULT OF THE QUERY
-    if (countriesCtx.queried) {
-        countriesContent = countriesCtx.queriedCountries.slice(0, 60).map(data => (
-            <Country className={countriesCtx.isLightMode ? "--lm" : '--dm'} onClick={clickHandler} name={data.name} key={data.name}
+    if (countriesData.queried) {
+        countriesContent = countriesData.queriedCountries.slice(0, 60).map(data => (
+            <Country className={isLightMode ? "--lm" : '--dm'} onClick={clickHandler} name={data.name} key={data.name}
                 flag={data.flag} population={data.population.toLocaleString()}
                 capital={data.capital} region={data.region} />
         ))
@@ -29,10 +37,9 @@ const Countries = (props) => {
     </section>)
     return (<React.Fragment>
         <ErrorBoundaries>
-
-            {countriesCtx.errorMsg !== "" && <p className={styles.error}>{countriesCtx.errorMsg}</p>}
-            {!countriesCtx.isLoading && sectionContent}
-            {countriesCtx.isLoading && <div className={styles.loading}></div>}
+            {status.errorMsg !== "" && <p className={styles.error}>{status.errorMsg}</p>}
+            {!status.isLoading && sectionContent}
+            {status.isLoading && <div className={styles.loading}></div>}
         </ErrorBoundaries>
     </React.Fragment>
     )
